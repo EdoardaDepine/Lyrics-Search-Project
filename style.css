@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(249, 239, 226);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 17px;
+    font-style: italic;
+}
+
+#form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 18px;
+    font-style: italic;
+}
+
+#buttonSing {
+    border: none;
+    background-color: rgb(208, 203, 203);
+    width: 100px;
+    height: 25px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-style: italic;
+}
