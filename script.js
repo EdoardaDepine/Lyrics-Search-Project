@@ -1,13 +1,19 @@
 function findLyrics(artist, song) {
   return fetch(
-    `https://api.vagalume.com.br/search.php?apikey=660a4395f992ff67786584e238f501aa&art=${artist}&mus=${song}`
+    `https://api.vagalume.com.br/search.php?&art=${artist}y&mus=${song}`
   );
 }
 
 const formulary = document.querySelector("#form");
 formulary.addEventListener("submit", (event) => {
   event.preventDefault();
-  doSubmit();
+
+  try {
+    doSubmit();
+  } catch (error) {
+    const errorArtist = document.querySelector("#errorArtist");
+    errorArtist.innerHTML = error.message;
+  }
 });
 
 async function doSubmit() {
@@ -15,15 +21,14 @@ async function doSubmit() {
   const lyric = document.querySelector("#lyric");
   const song = document.querySelector("#songInput");
 
-  console.log(artist.value);
-  console.log(song.value);
+  if (artist.value.length === 0 || song.value.length === 0) {
+    throw new Error("Please select a artist and a song");
+  } else {
+    lyric.innerHTML = "Loading...";
 
-  lyric.innerHTML = "Loading...";
-
-  const lyricResponse = await findLyrics(artist.value, song.value);
-  const response = await lyricResponse.json();
-  const response2 = response.find((element) => {
-    element.mus;
-  });
-  const response3 = (response2.text.lyric.innerHTML = response3);
+    const lyricResponse = await findLyrics(artist.value, song.value);
+    const musicObject = await lyricResponse.json();
+    const musicText = musicObject.mus[0].text;
+    lyric.innerHTML = musicText;
+  }
 }

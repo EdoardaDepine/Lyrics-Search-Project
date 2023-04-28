@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(249, 239, 226);
+    background-color: rgb(247, 232, 246);
 }
 
 .container {
@@ -17,6 +17,10 @@ body {
     gap: 10px;
     font-size: 18px;
     font-style: italic;
+}
+
+#lyric {
+    text-align: center;
 }
 
 #buttonSing {
